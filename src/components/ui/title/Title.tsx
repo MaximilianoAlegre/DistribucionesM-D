@@ -6,7 +6,7 @@ interface Props {
   className?: string;
 }
 
-export const Title = ({ title, subtitle, className }) => {
+export const Title: React.FC<Props> = ({ title, subtitle, className }) => {
   return (
     <div className={`mt-3 ${className}`}>
       <h1
