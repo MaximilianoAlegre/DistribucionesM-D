@@ -126,14 +126,14 @@ export const ProductCard: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center items-stretch gap-5">
+      <div className="flex flex-wrap justify-center items-stretch gap-2 md:gap-5">
         {filteredProducts.map((product) => (
           <div
             key={product.id}
-            className="overflow-hidden fade-in w-[280px] h-[450px] flex flex-col justify-between bg-gris"
+            className="overflow-hidden fade-in w-[175px] md:w-[280px] h-[270px] md:h-[450px] flex flex-col justify-between bg-gris"
           >
             <Link href={`/product/${product.id}`}>
-              <div className="flex justify-center bg-white overflow-hidden items-center w-full h-[265px]">
+              <div className="flex justify-center bg-white overflow-hidden items-center w-full h-[130px]">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -142,8 +142,8 @@ export const ProductCard: React.FC = () => {
               </div>
             </Link>
 
-            <div className="w-full h-[185px] flex flex-col justify-between">
-              <div className="p-4 flex flex-col">
+            <div className="w-full h-full md:h-[185px] flex flex-col justify-between">
+              <div className="md:p-4 flex flex-col">
                 <Link href={`/product/${product.id}`}>
                   <p className="hover:text-blue-600">{product.title}</p>
                 </Link>
@@ -156,7 +156,7 @@ export const ProductCard: React.FC = () => {
                   className="flex justify-center items-center space-x-1 border-b-2 border-celeste p-2 w-full hover:bg-gris1"
                 >
                   <IoEyeOutline />
-                  <p className="text-xs">DETALLES</p>
+                  <p className="hidden md:block text-xs">DETALLES</p>
                 </Link>
                 <div className="w-[1px] bg-black" />
 
@@ -165,7 +165,7 @@ export const ProductCard: React.FC = () => {
                   className="flex justify-center items-center space-x-1 border-b-2 border-celeste p-2 w-full hover:bg-gris1"
                 >
                   <IoCartOutline />
-                  <p className="text-xs">COMPRAR</p>
+                  <p className="text-xs hidden md:block">COMPRAR</p>
                 </button>
               </div>
             </div>

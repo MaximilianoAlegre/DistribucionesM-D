@@ -73,15 +73,15 @@ function NewProducts(): JSX.Element {
         </h1>
 
         {/* Lista de productos del último mes */}
-        <ul className="flex flex-wrap justify-center items-stretch gap-5">
+        <ul className="flex flex-wrap justify-center items-stretch gap-2 md:gap-5">
           {lastMonthProducts.map((product) => (
             <div
               key={product.id}
-              className="overflow-hidden fade-in w-[280px] h-[450px] flex flex-col justify-between"
+              className="overflow-hidden fade-in w-[180px] md:w-[280px] h-[270px] md:h-[450px] flex flex-col justify-between bg-gris"
             >
               <Link href={`/product/${product.id}`}>
                 {/* Actualizamos el enlace para dirigir al usuario a la nueva página */}
-                <div className="flex justify-center items-center w-full h-[265px] bg-white overflow-hidden">
+                <div className="flex justify-center bg-white overflow-hidden items-center w-full h-[130px]">
                   <img
                     src={product.image}
                     alt={product.title}
@@ -105,17 +105,18 @@ function NewProducts(): JSX.Element {
                     className="flex justify-center items-center space-x-1 border-b-2 border-celeste p-2 w-full hover:bg-gris1"
                   >
                     <IoEyeOutline />
-                    <p className="text-xs">DETALLES</p>
+                    <p className="text-xs hidden md:block">DETALLES</p>
                   </Link>
                   {/* Divisor */}
                   <div className="w-[1px] bg-black" />
+                  <div className="w-1 h-full bg-celeste"/>
 
                   <button
                     onClick={() => onAddProduct(product)}
                     className="flex justify-center items-center space-x-1 border-b-2 border-celeste p-2 w-full hover:bg-gris1"
                   >
                     <IoCartOutline />
-                    <p className="text-xs">COMPRAR</p>
+                    <p className="text-xs hidden md:block">COMPRAR</p>
                   </button>
                 </div>
               </div>
