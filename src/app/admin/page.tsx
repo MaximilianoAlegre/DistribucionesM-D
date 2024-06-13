@@ -5,7 +5,7 @@ import { BiSolidCategory } from "react-icons/bi";
 import { FaShop } from "react-icons/fa6";
 import { IoLogOutOutline } from "react-icons/io5";
 
-export default function () {
+export default function Admin() {
   return (
     <div className="flex flex-wrap justify-center items-center w-full gap-5">
       <Link

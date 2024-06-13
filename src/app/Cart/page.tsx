@@ -1,6 +1,6 @@
 import Carrito from "@/components/carrito/Carrito";
 
-export default function () {
+export default function Cart() {
     return (
       <div>
         <Carrito/>

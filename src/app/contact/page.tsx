@@ -3,7 +3,7 @@ import { FaMapMarkedAlt, FaPhone } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { IoLogoWhatsapp } from "react-icons/io5";
 
-export default function () {
+export default function Contact() {
   return (
     <div>
       <div className="flex flex-wrap justify-center items-stretch gap-5">
