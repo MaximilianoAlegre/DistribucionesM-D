@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --primary: #274494;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+/* 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */ 
+
+body {
+  background: #111111;
+  color: #F2F2F2;
+}
+
+
+
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+} 
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fade-in {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+
+.btn-primary {
+  @apply bg-gris1 p-4 flex justify-center items-center space-x-3 w-full border-t-4 border-gris2 hover:bg-gris2
+}
+
+.btn-put {
+  @apply bg-green-500 p-4 flex justify-center items-center space-x-3 w-full border-t-4 border-green-950 hover:bg-green-700 text-black
+}
+
+.btn-delete {
+  @apply bg-red-500 p-4 flex justify-center items-center space-x-3 w-full border-t-4 border-red-950 hover:bg-red-700 text-black
+}
+
+/* Navbar styles */
+
+
+.ulNav {
+  @apply
+  flex
+  space-x-3
+  }
+
+.liNav {
+  @apply
+  list-none
+  transition-all
+  duration-500
+}
+.linkNav {
+  @apply
+  relative
+  block
+  text-center
+  m-0
+  text-[#848484]
+  text-xl
+  font-thin
+  list-none
+  uppercase
+}
+
+.ulNav:hover li {
+  @apply
+  opacity-20
+  blur-sm
+}
+
+.ulNav li:hover {
+  @apply
+  opacity-100
+  blur-none
+}
