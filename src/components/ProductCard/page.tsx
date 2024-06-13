@@ -133,7 +133,7 @@ export const ProductCard: React.FC = () => {
             className="overflow-hidden fade-in w-[175px] md:w-[280px] h-[270px] md:h-[450px] flex flex-col justify-between bg-gris"
           >
             <Link href={`/product/${product.id}`}>
-              <div className="flex justify-center bg-white overflow-hidden items-center w-full h-[130px]">
+              <div className="flex justify-center bg-white overflow-hidden items-center w-full h-[130px] md:h-[270px]">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -142,7 +142,7 @@ export const ProductCard: React.FC = () => {
               </div>
             </Link>
 
-            <div className="w-full h-full md:h-[185px] flex flex-col justify-between">
+            <div className="w-full h-full md:h-[180px] flex flex-col justify-between">
               <div className="md:p-4 flex flex-col">
                 <Link href={`/product/${product.id}`}>
                   <p className="hover:text-blue-600">{product.title}</p>
@@ -158,7 +158,7 @@ export const ProductCard: React.FC = () => {
                   <IoEyeOutline />
                   <p className="hidden md:block text-xs">DETALLES</p>
                 </Link>
-                <div className="w-[1px] bg-black" />
+                <div className="w-1 h-full bg-celeste"/>
 
                 <button
                   onClick={() => onAddProduct(product)}

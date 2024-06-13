@@ -81,7 +81,7 @@ function NewProducts(): JSX.Element {
             >
               <Link href={`/product/${product.id}`}>
                 {/* Actualizamos el enlace para dirigir al usuario a la nueva página */}
-                <div className="flex justify-center bg-white overflow-hidden items-center w-full h-[130px]">
+                <div className="flex justify-center bg-white overflow-hidden items-center w-full h-[130px] md:h-[270px]">
                   <img
                     src={product.image}
                     alt={product.title}
@@ -90,7 +90,7 @@ function NewProducts(): JSX.Element {
                 </div>
               </Link>
 
-              <div className="w-full h-[185px] flex flex-col justify-between">
+              <div className="w-full md:h-[180px] flex flex-col justify-between">
                 <div className="p-4 flex flex-col">
                   <Link href={`/product/${product.id}`}>
                     {/* Actualizamos el enlace para dirigir al usuario a la nueva página */}
@@ -108,7 +108,6 @@ function NewProducts(): JSX.Element {
                     <p className="text-xs hidden md:block">DETALLES</p>
                   </Link>
                   {/* Divisor */}
-                  <div className="w-[1px] bg-black" />
                   <div className="w-1 h-full bg-celeste"/>
 
                   <button
