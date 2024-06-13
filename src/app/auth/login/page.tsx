@@ -47,7 +47,7 @@ function LoginPage(): JSX.Element {
           </p>
         )}
 
-        <h1 className="font-bold text-4xl mb-4 text-text1 text-center">
+        <h1 className="font-bold text-4xl mb-4 text-celeste text-center">
           Iniciar Sesion
         </h1>
 
