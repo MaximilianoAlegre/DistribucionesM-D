@@ -1,10 +1,9 @@
-"use client";
+'use client'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-// Definir la interfaz para los datos del formulario
 interface LoginFormInputs {
   email: string;
   password: string;
@@ -20,38 +19,39 @@ function LoginPage(): JSX.Element {
   const [error, setError] = useState<string | null>(null);
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
-    console.log(data);
+    try {
+      const res = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
 
-    const res = await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    });
-
-    console.log(res);
-    if (res?.error) {
-      setError(res.error);
-    } else {
-      router.push("/admin");
-      console.log(error);
-      router.refresh();
+      if (res?.error) {
+        setError(res.error);
+      } else {
+        router.push("/");
+        router.refresh();
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      setError("Hubo un problema al iniciar sesión. Por favor, intenta nuevamente.");
     }
   };
 
   return (
-    <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="w-[90%] md:w-1/4">
+    <div className="h-screen flex justify-center items-center">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-1/4">
         {error && (
           <p className="bg-red-500 text-lg text-white p-3 rounded mb-2">
             {error}
           </p>
         )}
 
-        <h1 className="font-bold text-4xl mb-4 text-celeste text-center">
-          Iniciar Sesion
+        <h1 className="text-gray-200 font-bold text-4xl mb-4">
+          Iniciar Sesión
         </h1>
 
-        <label htmlFor="email" className="mb-2 block text-sm text-text2">
+        <label htmlFor="email" className="text-gray-500 mb-2 block text-sm">
           Email:
         </label>
         <input
@@ -59,18 +59,20 @@ function LoginPage(): JSX.Element {
           {...register("email", {
             required: {
               value: true,
-              message: "Email es un campo obligatorio",
+              message: "Email is required",
             },
           })}
-          className="p-3 rounded block mb-2 text-black w-full"
+          className="p-3 rounded block mb-2 bg-celeste text-black w-full"
           placeholder="user@email.com"
         />
 
         {errors.email && (
-          <span className="text-red-500 text-xs">{errors.email.message}</span>
+          <span className="text-red-500 text-xs">
+            {errors.email.message}
+          </span>
         )}
 
-        <label htmlFor="password" className="mb-2 block text-sm text-text2">
+        <label htmlFor="password" className="text-gray-500 mb-2 block text-sm">
           Contraseña:
         </label>
         <input
@@ -78,10 +80,10 @@ function LoginPage(): JSX.Element {
           {...register("password", {
             required: {
               value: true,
-              message: "Contraseña es un campo obligatorio",
+              message: "Password is required",
             },
           })}
-          className="p-3 rounded block mb-2 text-black w-full"
+          className="p-3 rounded block mb-2 bg-celeste text-black w-full"
           placeholder="******"
         />
 
@@ -91,8 +93,11 @@ function LoginPage(): JSX.Element {
           </span>
         )}
 
-        <button className="btn-primary">
-          Iniciar Sesion
+        <button
+          type="submit"
+          className="btn-primary"
+        >
+          Iniciar Sesión
         </button>
       </form>
     </div>
