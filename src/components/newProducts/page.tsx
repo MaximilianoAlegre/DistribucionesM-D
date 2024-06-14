@@ -17,7 +17,7 @@ interface Product {
   createdat: Date; // Cambiar a string si es necesario
 }
 
-function NewProducts(): JSX.Element {
+export function NewProducts(): JSX.Element {
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState("");
   const router = useRouter();
@@ -128,5 +128,3 @@ function NewProducts(): JSX.Element {
     </div>
   );
 }
-
-export default NewProducts;

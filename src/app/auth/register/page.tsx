@@ -10,7 +10,7 @@ interface RegisterFormInputs {
   confirmPassword: string;
 }
 
-function RegisterPage(): JSX.Element {
+const RegisterPage: React.FC = (): JSX.Element => {
   const {
     register,
     handleSubmit,
@@ -131,6 +131,6 @@ function RegisterPage(): JSX.Element {
       </form>
     </div>
   );
-}
+};
 
 export default RegisterPage;

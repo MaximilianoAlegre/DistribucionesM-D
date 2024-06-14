@@ -7,7 +7,7 @@ interface CategoryFormInputs {
   name: string;
 }
 
-function CategoryRegisterPage(): JSX.Element {
+export function CategoryRegisterPage(): JSX.Element {
   const [categoryData, setCategoryData] = useState<CategoryFormInputs>({
     name: "",
   });
@@ -196,5 +196,3 @@ function CategoryRegisterPage(): JSX.Element {
     </div>
   );
 }
-
-export default CategoryRegisterPage;

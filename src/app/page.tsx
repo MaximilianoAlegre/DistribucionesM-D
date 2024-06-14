@@ -1,10 +1,11 @@
 "use client";
-import ProductCreatePage from "@/components/newProducts/page";
+
+import { NewProducts } from "@/components";
 
 export default function Home() {
   return (
     <main>
-      <ProductCreatePage />
+      <NewProducts/>
     </main>
   );
 }
