@@ -7,7 +7,7 @@ interface CategoryFormInputs {
   name: string;
 }
 
-export function CategoryRegisterPage(): JSX.Element {
+function CategoryRegisterPage(): JSX.Element {
   const [categoryData, setCategoryData] = useState<CategoryFormInputs>({
     name: "",
   });
@@ -173,7 +173,9 @@ export function CategoryRegisterPage(): JSX.Element {
 
       {/* Lista de categorías para editar */}
       <div className="w-[90%] md:w-[60%] mx-auto mt-5">
-        <h2 className="text-2xl mb-4 text-text1 text-center">EDITAR CATEGORÍAS</h2>
+        <h2 className="text-2xl mb-4 text-text1 text-center">
+          EDITAR CATEGORÍAS
+        </h2>
         <ul>
           {filteredCategories.map((category) => (
             <li
@@ -196,3 +198,4 @@ export function CategoryRegisterPage(): JSX.Element {
     </div>
   );
 }
+export default CategoryRegisterPage;
