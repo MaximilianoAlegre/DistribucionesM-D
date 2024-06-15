@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export default withAuth(
   function middleware(req: NextRequest) {
-    // Aquí puedes añadir cualquier lógica adicional que necesites para tu middleware
     return NextResponse.next();
   }
 );
@@ -16,7 +15,5 @@ export const config = {
     "/auth/register",
     "/newcategory",
     "/new",
-    "/admin",
-    "/Admin"
   ]
 };
