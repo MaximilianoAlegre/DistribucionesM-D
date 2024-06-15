@@ -117,7 +117,7 @@ export const Sidebar = () => {
         <div className="w-full h-px bg-gray-200 my-10" />
         <Link
           onClick={() => closeMenu()}
-          href="/admin"
+          href="/Admin"
           className="flex items-center mt-3 p-2 hover:bg-gray-100 hover:text-black rounded transition-all"
         >
           <MdAdminPanelSettings size={20} />
