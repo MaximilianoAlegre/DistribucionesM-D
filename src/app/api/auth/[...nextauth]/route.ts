@@ -51,12 +51,18 @@ const authOptions: NextAuthOptions = {
           id: userFound.id.toString(),  // Convertimos a string para que coincida con el tipo `User`
           name: userFound.username,
           email: userFound.email,
-        } as any;
+        };
       },
     }),
   ],
   pages: {
     signIn: '/auth/login',
+  },
+  callbacks: {
+    async session({ session, token, user }) {
+      // Puedes añadir propiedades adicionales a la sesión si es necesario
+      return session; // The return type will match the one returned in `useSession()`
+    },
   },
 };
 
