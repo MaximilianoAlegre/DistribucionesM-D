@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <CarritoProvider>
           <TopMenu />
-          <Sidebar/>
+          <Sidebar />
           <Provider>
             <div className="mt-40 w-[90%] mx-auto min-h-screen">{children}</div>
           </Provider>

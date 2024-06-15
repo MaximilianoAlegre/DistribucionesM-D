@@ -1,12 +1,15 @@
 "use client";
 
 import { NewProducts, Welcome } from "@/components";
+import { SessionProvider } from "next-auth/react";
 
 export default function Home() {
   return (
-    <main>
-      <Welcome/>
-      <NewProducts/>
-    </main>
+    <SessionProvider>
+      <main>
+        <Welcome />
+        <NewProducts />
+      </main>
+    </SessionProvider>
   );
 }
