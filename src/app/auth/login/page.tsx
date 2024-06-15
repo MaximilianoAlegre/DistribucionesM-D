@@ -31,7 +31,7 @@ const LoginPage: React.FC = () => {
     if (res?.error) {
       setError(res.error);
     } else {
-      router.push("/Admin");
+      router.push("/contact");
       console.log(error);
       router.refresh();
     }
