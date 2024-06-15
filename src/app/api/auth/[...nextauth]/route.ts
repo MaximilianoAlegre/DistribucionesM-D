@@ -24,8 +24,12 @@ const authOptions: NextAuthOptions = {
         email: { label: 'Email', type: 'text', placeholder: 'jsmith' },
         password: { label: 'Password', type: 'password', placeholder: '*****' },
       },
-      async authorize(credentials: Credentials & { req: any }) {
-        const { email, password } = credentials;
+      async authorize(credentials, req) {
+        if (!credentials) {
+          return null;
+        }
+
+        const { email, password } = credentials as Credentials;
 
         const userFound: User | null = await db.users.findUnique({
           where: {
@@ -34,20 +38,20 @@ const authOptions: NextAuthOptions = {
         });
 
         if (!userFound) {
-          throw new Error('No user found');
+          return null;
         }
 
         const matchPassword: boolean = await bcrypt.compare(password, userFound.password);
 
         if (!matchPassword) {
-          throw new Error('Wrong password');
+          return null;
         }
 
         return {
-          id: userFound.id,
+          id: userFound.id.toString(),  // Convertimos a string para que coincida con el tipo `User`
           name: userFound.username,
           email: userFound.email,
-        };
+        } as any;
       },
     }),
   ],
