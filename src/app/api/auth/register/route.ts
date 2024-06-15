@@ -1,10 +1,16 @@
-import { NextResponse } from "next/server";
-import bcrypt from "bcrypt";
-import db from "@/libs/db.users";
+import { NextRequest, NextResponse } from 'next/server';
+import bcrypt from 'bcrypt';
+import db from '@/libs/db.users';
 
-export async function POST(request) {
+interface UserData {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export async function POST(request: NextRequest) {
   try {
-    const data = await request.json();
+    const data: UserData = await request.json();
 
     const userFound = await db.users.findUnique({
       where: {
@@ -15,22 +21,24 @@ export async function POST(request) {
     if (userFound) {
       return NextResponse.json(
         {
-          message: "Email already exists",
+          message: 'Email already exists',
         },
         {
           status: 400,
         }
       );
     }
+
     const usernameFound = await db.users.findUnique({
       where: {
         username: data.username,
       },
     });
+
     if (usernameFound) {
       return NextResponse.json(
         {
-          message: "Username already exists",
+          message: 'Username already exists',
         },
         {
           status: 400,
@@ -39,6 +47,7 @@ export async function POST(request) {
     }
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
+
     const newUser = await db.users.create({
       data: {
         username: data.username,
@@ -50,10 +59,10 @@ export async function POST(request) {
     const { password: _, ...user } = newUser;
 
     return NextResponse.json(user);
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
       {
-        message: error.message,
+        message: error.message || 'Internal server error',
       },
       {
         status: 500,
